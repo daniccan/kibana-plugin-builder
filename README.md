@@ -1,13 +1,13 @@
-# Kibana Plugin Builder
+## Kibana Plugin Builder
 
 A Docker image to build plugins for any given version of [Kibana](https://github.com/elastic/kibana).
 
-## Requirements
+### Requirements
 
 - Docker
 - A [Kibana Plugin](https://github.com/elastic/kibana/tree/master/packages/kbn-plugin-generator)
 
-## Usage
+### Usage
 
 ```bash
 docker run -it -e KIBANA_VERSION=$KIBANA_VERSION -e PLUGIN_VERSION=$PLUGIN_VERSION -v $KIBANA_PLUGIN_PATH:/kibana-extra/kibana-plugin --rm kibana-plugin-builder
