@@ -16,7 +16,7 @@ docker run -it -e KIBANA_VERSION=$KIBANA_VERSION -e PLUGIN_VERSION=$PLUGIN_VERSI
 ### Example
 
 ```bash
-docker run -it -e KIBANA_VERSION=6.8 -e PLUGIN_VERSION=1.0.0 -v /home/username/my_plugin:/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
+docker run -it -e KIBANA_VERSION=7.5.0 -e PLUGIN_VERSION=1.0.0 -v /home/username/my_plugin:/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
 ```
 
 ### Issues
