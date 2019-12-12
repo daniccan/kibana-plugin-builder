@@ -21,7 +21,16 @@ if [ -z "$PLUGIN_VERSION" ]
         PLUGIN_VERSION="1.0.0-$KIBANA_VERSION"
 fi
 
-NODE_VERSION=`curl -s https://raw.githubusercontent.com/elastic/kibana/$KIBANA_VERSION/.node-version`
+KIBANA_BRANCH=$KIBANA_VERSION
+# Check if KIBANA_VERSION is MAJOR.MINOR version or MAJOR.MINOR.PATCH version
+number_of_dots=`awk -F"." '{print NF-1}' <<< $KIBANA_VERSION`
+if [ "$number_of_dots" == 2 ]
+    then
+        readarray -d . -t strarr <<< $KIBANA_VERSION
+        KIBANA_BRANCH="${strarr[0]}.${strarr[1]}"
+fi
+
+NODE_VERSION=`curl -s https://raw.githubusercontent.com/elastic/kibana/$KIBANA_BRANCH/.node-version`
 
 if [ "$NODE_VERSION" == "404: Not Found" ]
     then
@@ -34,8 +43,8 @@ echo -e "$INFO_COLOR Install NVM $LOG_END"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 echo -e "$SUCCESS_COLOR NVM Installed Successfully. Version:"  `nvm --version` $LOG_END
 
@@ -59,7 +68,7 @@ echo $NEW_LINE
 
 echo -e "$INFO_COLOR Cloning Kibana Version: $KIBANA_VERSION $LOG_END"
 
-git clone --branch $KIBANA_VERSION --depth 1 https://github.com/elastic/kibana /kibana
+git clone --branch v$KIBANA_VERSION --depth 1 https://github.com/elastic/kibana /kibana
 
 echo $NEW_LINE
 

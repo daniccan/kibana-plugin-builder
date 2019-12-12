@@ -13,8 +13,6 @@ A Docker image to build plugins for any given version of [Kibana](https://github
 docker run -it -e KIBANA_VERSION=$KIBANA_VERSION -e PLUGIN_VERSION=$PLUGIN_VERSION -v $KIBANA_PLUGIN_PATH:/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
 ```
 
-*Note:* $KIBANA_VERSION should match with the branch name in [Kibana GitHub Branches](https://github.com/elastic/kibana/branches/active).
-
 ### Example
 
 ```bash
