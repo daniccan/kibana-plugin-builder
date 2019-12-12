@@ -1,4 +1,4 @@
-## Kibana Plugin Builder
+## Kibana Plugin Builder [![GitHub Actions](https://github.com/daniccan/kibana-plugin-builder/workflows/Deploy%20to%20DockerHub/badge.svg)](https://github.com/daniccan/kibana-plugin-builder) [![Docker Pulls](https://img.shields.io/docker/pulls/daniccan/kibana-plugin-builder.svg)](https://hub.docker.com/r/daniccan/kibana-plugin-builder)
 
 A Docker image to build plugins for any given version of [Kibana](https://github.com/elastic/kibana).
 
@@ -10,7 +10,7 @@ A Docker image to build plugins for any given version of [Kibana](https://github
 ### Usage
 
 ```bash
-docker run -it -e KIBANA_VERSION=$KIBANA_VERSION -e PLUGIN_VERSION=$PLUGIN_VERSION -v $KIBANA_PLUGIN_PATH:/kibana-extra/kibana-plugin --rm kibana-plugin-builder
+docker run -it -e KIBANA_VERSION=$KIBANA_VERSION -e PLUGIN_VERSION=$PLUGIN_VERSION -v $KIBANA_PLUGIN_PATH:/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
 ```
 
 *Note:* $KIBANA_VERSION should match with the branch name in [Kibana GitHub Branches](https://github.com/elastic/kibana/branches/active).
@@ -18,7 +18,7 @@ docker run -it -e KIBANA_VERSION=$KIBANA_VERSION -e PLUGIN_VERSION=$PLUGIN_VERSI
 ### Example
 
 ```bash
-docker run -it -e KIBANA_VERSION=6.8 -e PLUGIN_VERSION=1.0.0 -v /home/username/my_plugin:/kibana-extra/kibana-plugin --rm kibana-plugin-builder
+docker run -it -e KIBANA_VERSION=6.8 -e PLUGIN_VERSION=1.0.0 -v /home/username/my_plugin:/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
 ```
 
 ### Issues
