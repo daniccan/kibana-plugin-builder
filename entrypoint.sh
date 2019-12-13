@@ -30,7 +30,13 @@ if [ "$number_of_dots" == 2 ]
         KIBANA_BRANCH="${strarr[0]}.${strarr[1]}"
 fi
 
-NODE_VERSION=`curl -s https://raw.githubusercontent.com/elastic/kibana/$KIBANA_BRANCH/.node-version`
+echo -e "$INFO_COLOR Cloning Kibana Version: $KIBANA_VERSION $LOG_END"
+
+git clone --branch v$KIBANA_VERSION --depth 1 https://github.com/elastic/kibana /kibana
+
+echo $NEW_LINE
+
+NODE_VERSION=`cat /kibana/.node-version`
 
 if [ "$NODE_VERSION" == "404: Not Found" ]
     then
@@ -63,12 +69,6 @@ echo -e "$INFO_COLOR Install Node Dependencies $LOG_END"
 npm install -g yarn
 
 echo -e "$SUCCESS_COLOR Node Dependencies Installed Successfully. $LOG_END"
-
-echo $NEW_LINE
-
-echo -e "$INFO_COLOR Cloning Kibana Version: $KIBANA_VERSION $LOG_END"
-
-git clone --branch v$KIBANA_VERSION --depth 1 https://github.com/elastic/kibana /kibana
 
 echo $NEW_LINE
 
