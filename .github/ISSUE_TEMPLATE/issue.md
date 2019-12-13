@@ -1,7 +1,7 @@
 ---
 name: Issue
 about: Create an issue for a bug or new feature.
-title: "[ISSUE]"
+title: ""
 labels: ''
 assignees: ''
 
