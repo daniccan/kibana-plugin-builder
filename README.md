@@ -21,7 +21,7 @@ docker run -it -e KIBANA_VERSION=7.5.0 -e PLUGIN_VERSION=1.0.0 -v /home/username
 
 ### Issues
 
-Find any bugs or need additional features? Please don't hesitate to [create an issue](https://github.com/daniccan/kibana-plugin-builder/issues/new).
+Find any bugs or need additional features? Please don't hesitate to [create an issue](https://github.com/daniccan/kibana-plugin-builder/issues/new?assignees=&labels=&template=issue.md&title=).
 
 ### License
 
