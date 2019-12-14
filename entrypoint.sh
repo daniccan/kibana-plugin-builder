@@ -74,23 +74,31 @@ echo $NEW_LINE
 
 echo -e "$INFO_COLOR Bootstrap Kibana $LOG_END"
 
-cd /kibana && yarn kbn bootstrap && cd ..
+cd /kibana && yarn kbn bootstrap && cd ../kibana-extra/kibana-plugin
 
 echo $NEW_LINE
 
 echo -e "$INFO_COLOR Build Kibana Plugin $LOG_END"
 
-# Set Kibana Version in package.json
-jq "del(.kibana)" /kibana-extra/kibana-plugin/package.json > package_tmp_1.json
-jq ". + { \"kibana\": { \"version\": \"$KIBANA_VERSION\", \"templateVersion\": \"1.0.0\" } }" package_tmp_1.json > package_tmp_2.json
-mv package_tmp_2.json package_tmp_1.json && mv package_tmp_1.json /kibana-extra/kibana-plugin/package.json
+package_json=$(cat package.json)
+kibana_version_in_package_json=$(jq ".kibana.version"<<<$package_json)
 
-# Set Plugin Version in package.json
-jq "del(.version)" /kibana-extra/kibana-plugin/package.json > package_tmp_1.json
-jq ". + { \"version\": \"$PLUGIN_VERSION\" }" package_tmp_1.json > package_tmp_2.json
-mv package_tmp_2.json package_tmp_1.json && mv package_tmp_1.json /kibana-extra/kibana-plugin/package.json
+if [ -f ".kibana-plugin-helpers.json" ] && [ "$kibana_version_in_package_json" == "\"kibana\"" ]
+    then    # Set Kibana Version in .kibana-plugin-helpers.json
+        echo -e "$INFO_COLOR Update .kibana-plugin-helpers.json $LOG_END"
+        kibana_plugin_helpers_json=$(cat .kibana-plugin-helpers.json)
+        kibana_plugin_helpers_json=$(jq ".version = \"$PLUGIN_VERSION\""<<<$kibana_plugin_helpers_json)
+        kibana_plugin_helpers_json=$(jq ".pkg.kibana.version = \"$KIBANA_VERSION\""<<<$kibana_plugin_helpers_json)
+        jq "."<<<$kibana_plugin_helpers_json > .kibana-plugin-helpers.json
 
-cd /kibana-extra/kibana-plugin/ && yarn build
+else    # Set Kibana & Plugin Version in package.json
+    echo -e "$INFO_COLOR Update package.json $LOG_END"
+    package_json=$(jq ".version = \"$PLUGIN_VERSION\""<<<$package_json)
+    package_json=$(jq ".kibana.version = \"$KIBANA_VERSION\""<<<$package_json)
+    jq "."<<<$package_json > package.json
+fi
+
+rm -f yarn.lock && yarn build
 
 echo $NEW_LINE
 
