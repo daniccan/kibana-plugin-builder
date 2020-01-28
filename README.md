@@ -19,6 +19,13 @@ docker run -it -e KIBANA_VERSION=$KIBANA_VERSION -e PLUGIN_VERSION=$PLUGIN_VERSI
 docker run -it -e KIBANA_VERSION=7.5.0 -e PLUGIN_VERSION=1.0.0 -v /home/username/my_plugin:/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
 ```
 
+### Supported Kibana Versions
+
+| Major Version        | Minor Version(s)           |
+|----------------------|----------------------------|
+| 6.x                  | 6.5.x, 6.6.x, 6.7.x, 6.8.x |
+| 7.x                  | 7.0.x, 7.1.x               |
+
 ### Issues
 
 Find any bugs or need additional features? Please don't hesitate to [create an issue](https://github.com/daniccan/kibana-plugin-builder/issues/new).
