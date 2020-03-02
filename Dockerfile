@@ -1,4 +1,5 @@
-FROM ubuntu:18.04
+# FROM ubuntu-with-gosu:latest
+FROM gosu/ubuntu:latest
 
 LABEL maintainer "https://github.com/daniccan"
 

@@ -32,11 +32,11 @@ fi
 
 echo -e "$INFO_COLOR Cloning Kibana Version: $KIBANA_VERSION $LOG_END"
 
-git clone --branch v$KIBANA_VERSION --depth 1 https://github.com/elastic/kibana /kibana
+git clone --branch v$KIBANA_VERSION --depth 1 https://github.com/elastic/kibana /home/ubuntu/kibana
 
 echo $NEW_LINE
 
-NODE_VERSION=`cat /kibana/.node-version`
+NODE_VERSION=`cat /home/ubuntu/kibana/.node-version`
 
 if [ "$NODE_VERSION" == "404: Not Found" ]
     then
@@ -74,7 +74,7 @@ echo $NEW_LINE
 
 echo -e "$INFO_COLOR Bootstrap Kibana $LOG_END"
 
-cd /kibana && yarn kbn bootstrap && cd ../kibana-extra/kibana-plugin
+cd /home/ubuntu/kibana && yarn kbn bootstrap && cd ../kibana-extra/kibana-plugin
 
 echo $NEW_LINE
 
