@@ -10,13 +10,13 @@ A Docker image to build plugins for any given version of [Kibana](https://github
 ### Usage
 
 ```bash
-docker run -it -e KIBANA_VERSION=<KIBANA_VERSION> -e PLUGIN_VERSION=<PLUGIN_VERSION> -e LOCAL_USER_ID=`id -u $USER` -v <KIBANA_PLUGIN_PATH>:/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
+docker run -it -e KIBANA_VERSION=<KIBANA_VERSION> -e PLUGIN_VERSION=<PLUGIN_VERSION> -e LOCAL_USER_ID=`id -u $USER` -v <KIBANA_PLUGIN_PATH>:/home/ubuntu/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
 ```
 
 ### Example
 
 ```bash
-docker run -it -e KIBANA_VERSION=7.5.0 -e PLUGIN_VERSION=1.0.0 -e LOCAL_USER_ID=`id -u $USER` -v /home/username/my_plugin:/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
+docker run -it -e KIBANA_VERSION=7.5.0 -e PLUGIN_VERSION=1.0.0 -e LOCAL_USER_ID=`id -u $USER` -v /home/username/my_plugin:/home/ubuntu/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
 ```
 
 ### Supported Kibana Versions
