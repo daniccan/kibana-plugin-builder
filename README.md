@@ -16,15 +16,15 @@ docker run -it -e KIBANA_VERSION=<KIBANA_VERSION> -e PLUGIN_VERSION=<PLUGIN_VERS
 ### Example
 
 ```bash
-docker run -it -e KIBANA_VERSION=7.5.0 -e PLUGIN_VERSION=1.0.0 -e LOCAL_USER_ID=`id -u $USER` -v /home/username/my_plugin:/home/ubuntu/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
+docker run -it -e KIBANA_VERSION=7.6.0 -e PLUGIN_VERSION=1.0.0 -e LOCAL_USER_ID=`id -u $USER` -v /home/username/my_plugin:/home/ubuntu/kibana-extra/kibana-plugin --rm daniccan/kibana-plugin-builder
 ```
 
 ### Supported Kibana Versions
 
-| Major Version        | Minor Version(s)                         |
-|----------------------|------------------------------------------|
-| 6.x                  | 6.5.x, 6.6.x, 6.7.x, 6.8.x               |
-| 7.x                  | 7.0.x, 7.1.x, 7.2.x, 7.3.x, 7.4.x        |
+| Major Version        | Minor Version(s)                                 |
+|----------------------|--------------------------------------------------|
+| 6.x                  | 6.5.x, 6.6.x, 6.7.x, 6.8.x                       |
+| 7.x                  | 7.0.x, 7.1.x, 7.2.x, 7.3.x, 7.4.x, 7.5.x, 7.6.x  |
 
 ### Issues
 
