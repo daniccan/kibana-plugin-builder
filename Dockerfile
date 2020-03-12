@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM daniccan/ubuntu-gosu:18.04
 
 LABEL maintainer "https://github.com/daniccan"
 
